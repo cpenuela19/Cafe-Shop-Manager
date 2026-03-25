@@ -30,5 +30,5 @@ public class UserEntity extends BaseEntity {
     // Relationships
     @OneToMany(mappedBy = "user")
     private List<IngredientPriceHistoryEntity> ingredientPrices = new ArrayList<>();
-
+    //test
 }
