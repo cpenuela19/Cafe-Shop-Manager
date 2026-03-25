@@ -1,4 +1,5 @@
 package com.charlytech.cafemanager.entities;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
@@ -30,4 +31,5 @@ public class UserEntity extends BaseEntity {
     // By default, in this relationship (OneToMany from this side) is going to be loaded as LAZY.
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<IngredientPriceHistoryEntity> ingredientPrices = new ArrayList<>();
+
 }
