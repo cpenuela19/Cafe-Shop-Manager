@@ -1,7 +1,6 @@
 package com.charlytech.cafemanager.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
