@@ -5,7 +5,6 @@ import com.charlytech.cafemanager.exceptions.IllegalOperationException;
 import com.charlytech.cafemanager.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.query.IllegalQueryOperationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,6 @@ public class UserService {
             throw new IllegalOperationException("Username already exists!");
         if(!userRepository.findByEmail(userEntity.getEmail()).isEmpty())
             throw new IllegalOperationException("Email already exists! try to Log In");
-
         return userRepository.save(userEntity);
     }
 }
