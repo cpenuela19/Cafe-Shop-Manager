@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Personal Files ###
+Logbook.md
+src/main/resources/application.properties
