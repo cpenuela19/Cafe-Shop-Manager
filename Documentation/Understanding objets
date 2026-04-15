@@ -1,0 +1,114 @@
+!--------------------- FROM SUPPLIER VIEW! ---------------------!
+
+
+
+
+
+Supplier:
+  id: 1
+  name: Insumos COLMAX
+  phoneNumber: 3012345678
+  email: contacto@cafeimperial.com
+  address: Calle 72 #10-34, Bogotá
+  ingredients:
+  
+    - SupplierIngredient:
+        id: 1
+        unitPrice: 30.0
+        baseQuantity: 1
+        baseUnit: KILOGRAM
+        active: true
+        createdAt: 2026-04-11T21:44:32.233669755
+        ingredient:
+            id: 1
+            name: Sal Marina
+            
+    - SupplierIngredient:
+        id: 2
+        unitPrice: 12.0
+        baseQuantity: 1
+        baseUnit: LITER
+        active: true
+        createdAt: 2026-04-11T21:44:32.236016380
+        ingredient:
+            id: 2
+            name: Leche Entera
+            
+            
+            
+            
+                   
+!--------------------- FROM SUPPLIERINGREDIENT VIEW! ---------------------!
+
+
+
+
+
+SupplierIngredient 1:
+  id: 1
+  unitPrice: 30.0
+  baseQuantity: 1
+  baseUnit: KILOGRAM
+  active: true
+  createdAt: 2026-04-11T21:44:32.233669755
+  supplier:
+    id: 1
+    name: Insumos COLMAX
+    phoneNumber: 3012345678
+    email: contacto@cafeimperial.com
+    address: Calle 72 #10-34, Bogotá
+  ingredient:
+    id: 1
+    name: Sal Marina
+    
+    
+    
+SupplierIngredient 2:
+  id: 2
+  unitPrice: 12.0
+  baseQuantity: 1
+  baseUnit: LITER
+  active: true
+  createdAt: 2026-04-11T21:44:32.236016380
+  supplier:
+    id: 1
+    name: Insumos COLMAX
+    phoneNumber: 3012345678
+    email: contacto@cafeimperial.com
+    address: Calle 72 #10-34, Bogotá
+  ingredient:
+    id: 2
+    name: Leche Entera
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

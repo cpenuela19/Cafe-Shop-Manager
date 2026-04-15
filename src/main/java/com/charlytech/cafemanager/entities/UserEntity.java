@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class UserEntity extends BaseEntity {
 
-    enum Role {
+    public enum Role {
         ADMIN,
         MANAGER,
         BAKER,

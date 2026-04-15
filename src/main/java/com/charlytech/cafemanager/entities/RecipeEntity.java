@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class RecipeEntity extends BaseEntity {
 
-    enum RecipeCategory{
+    public enum RecipeCategory{
       BREAD,
       PASTRY, // Hojaldres
       BAKERY,
@@ -27,13 +27,14 @@ public class RecipeEntity extends BaseEntity {
     private RecipeCategory category;
     private int prepTime; //Estimated preparation time (in minutes)
     private int batchSize; // Number of product output per batch xd
-    private boolean active;
+    private boolean active = false;
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "recipe")
     private List<ProductEntity> products = new ArrayList<>();
     @OneToMany(mappedBy = "recipe")
     private List<CostComponentEntity> costComponents =  new ArrayList<>();
-
+    @OneToMany(mappedBy = "recipe")
+    private List<RecipeIngredientEntity> recipeIngredients = new ArrayList<>();
 
 }

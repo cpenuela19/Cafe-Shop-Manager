@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 public class CostComponentEntity extends BaseEntity {
 
-    enum CostComponentType{
+    public enum CostComponentType{
         DIRECT_LABOR,
         OVERHEAD,
         PACKING
