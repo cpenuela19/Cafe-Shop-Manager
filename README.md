@@ -49,11 +49,11 @@ Due to the limited time I have to develop this whole project, I am not going to 
 - Cannot add an ingredient that doesn't exist
 - A recipe cannot be activated if any of its ingredients are inactive
 
-**Product**
+- [x] **Product**
 - No duplicate SKU
 - Must be linked to an existing recipe
 - A product's suggested price cannot be lower than the total calculated cost of its recipe
 
-**SupplierIngredient**
+- [x] **SupplierIngredient**
 - Unit price cannot be negative
 - A supplier ingredient cannot be deleted if it is the only source for that ingredient
