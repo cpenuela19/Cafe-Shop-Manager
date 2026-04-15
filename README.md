@@ -28,3 +28,32 @@
 
 11. As an admin, I want to register a product linked to a recipe and define its suggested price, so that I can manage what is offered for sale.
 12. As an admin, I want to see a product summary with its total cost breakdown and margin against the suggested price, so that I can evaluate the profitability of each product.
+## 2. Business rules for this project
+Due to the limited time I have to develop this whole project, I am not going to implement it in as much detail as the project needs. For that reason I will develop only the most important business rules, which are:
+
+- [x] **User**
+- No duplicate username
+- No duplicate email
+- A user cannot be deleted if they are the only ADMIN in the system
+
+- [x] **Supplier**
+- No duplicate name
+- A supplier cannot be deactivated if it is the only supplier providing a specific ingredient
+
+- [x] **Ingredient**
+- No duplicate name
+- An ingredient cannot be deactivated if it is currently used in at least one active recipe
+
+- [x] **Recipe**
+- No duplicate internal code
+- Cannot add an ingredient that doesn't exist
+- A recipe cannot be activated if any of its ingredients are inactive
+
+**Product**
+- No duplicate SKU
+- Must be linked to an existing recipe
+- A product's suggested price cannot be lower than the total calculated cost of its recipe
+
+**SupplierIngredient**
+- Unit price cannot be negative
+- A supplier ingredient cannot be deleted if it is the only source for that ingredient

@@ -2,7 +2,9 @@ package com.charlytech.cafemanager.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -10,15 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 public class SupplierIngredientEntity extends BaseEntity {
 
-    enum MeasurementUnit{
-        GRAM,
-        KILOGRAM,
-        LITER,
-        MILLILITER,
-        UNIT,
-        TABLESPOON,
-        TEASPOON
-    }
     private double unitPrice;
     private int baseQuantity;
     private MeasurementUnit baseUnit;
@@ -27,6 +20,8 @@ public class SupplierIngredientEntity extends BaseEntity {
 
     @ManyToOne
     private IngredientEntity ingredient;
+
+    @ToString.Exclude
     @ManyToOne
     private SupplierEntity supplier;
 

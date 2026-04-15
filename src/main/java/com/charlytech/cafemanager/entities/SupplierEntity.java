@@ -3,6 +3,7 @@ package com.charlytech.cafemanager.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class SupplierEntity extends BaseEntity {
     private boolean active;
     private LocalDateTime createdAt;
 
+//    @ToString.Exclude
     @OneToMany(mappedBy = "supplier")
     private List<SupplierIngredientEntity>  supplierIngredient =  new ArrayList<>();
-
 }

@@ -29,4 +29,16 @@ public class UserService {
             throw new IllegalOperationException("Email already exists! try to Log In");
         return userRepository.save(userEntity);
     }
+
+    //A user cannot be deleted if they are the only ADMIN in the system
+    @Transactional
+    public void deleteUser(UserEntity userEntity) {
+        // There must be at least one ADMIN
+        log.info("Trying to delete user {}", userEntity);
+        if(userEntity.getRole() == UserEntity.Role.ADMIN && userRepository.findByRole(userEntity.getRole()).size() < 2){
+            throw new IllegalOperationException("THERE CANNOT BE 0 ADMINS IN THE SYSTEM!");
+        }
+        userRepository.delete(userEntity);
+        log.info("{} Deleted...", userEntity.getUsername());
+    }
 }

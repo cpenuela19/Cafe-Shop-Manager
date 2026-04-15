@@ -7,10 +7,11 @@ import lombok.Data;
 @Data
 @Entity
 public class RecipeIngredientEntity extends BaseEntity {
-
     private double quantityUsed;
-
+    private MeasurementUnit measurementUnit;
 
     @ManyToOne
     private IngredientEntity ingredient;
+    @ManyToOne
+    private RecipeEntity recipe;
 }
