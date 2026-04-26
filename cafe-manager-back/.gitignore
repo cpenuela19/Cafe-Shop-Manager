@@ -34,4 +34,6 @@ build/
 
 ### Personal Files ###
 Logbook.md
+src/main/resources/application-prod.properties
+src/main/resources/application-dev.properties
 src/main/resources/application.properties
