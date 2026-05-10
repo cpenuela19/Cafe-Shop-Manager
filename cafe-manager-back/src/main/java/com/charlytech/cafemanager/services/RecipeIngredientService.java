@@ -26,20 +26,31 @@ public class RecipeIngredientService {
     @Autowired
     private RecipeIngredientRepository recipeIngredientRepository;
 
-    //    Cannot add an ingredient that doesn't exist
     @Transactional
-    public RecipeIngredientEntity addIngredientToRecipe(double quantityUsed, MeasurementUnit measurementUnit, Long ingredientId, Long recipeId)
-    {
+    public RecipeIngredientEntity addIngredientToRecipe(double quantityUsed, MeasurementUnit measurementUnit, Long ingredientId, Long recipeId) {
         Optional<IngredientEntity> ingredientValidation = ingredientRepository.findById(ingredientId);
         Optional<RecipeEntity> recipeValidation = recipeRepository.findById(recipeId);
 
         if (ingredientValidation.isEmpty())
             throw new IllegalOperationException("Ingredient not found");
-        if  (recipeValidation.isEmpty())
+        if (recipeValidation.isEmpty())
             throw new IllegalOperationException("Recipe not found");
 
-        RecipeIngredientEntity rel = new RecipeIngredientEntity();
+        // Quantity used must be greater than 0
+        if (quantityUsed <= 0)
+            throw new IllegalOperationException("Quantity used must be greater than 0");
 
+        // Cannot add an inactive ingredient to a recipe
+        if (!ingredientValidation.get().isActive())
+            throw new IllegalOperationException("Cannot add ingredient '" +
+                    ingredientValidation.get().getName() + "': it is inactive");
+
+        // Cannot add the same ingredient twice to the same recipe
+        if (recipeIngredientRepository.existsByRecipeIdAndIngredientId(recipeId, ingredientId))
+            throw new IllegalOperationException("Ingredient '" +
+                    ingredientValidation.get().getName() + "' is already part of this recipe");
+
+        RecipeIngredientEntity rel = new RecipeIngredientEntity();
         rel.setQuantityUsed(quantityUsed);
         rel.setMeasurementUnit(measurementUnit);
         rel.setIngredient(ingredientValidation.get());
@@ -47,5 +58,4 @@ public class RecipeIngredientService {
 
         return recipeIngredientRepository.save(rel);
     }
-
 }

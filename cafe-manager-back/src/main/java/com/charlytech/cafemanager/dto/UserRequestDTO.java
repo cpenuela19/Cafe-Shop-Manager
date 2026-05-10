@@ -6,12 +6,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class UserDTO {
-    private Long id;
+public class UserRequestDTO extends BaseDTO {
+    //Create/update a User...
     private String username;
     private String email;
     private String password;
     private UserEntity.Role role;
-    private boolean active;
-    private LocalDateTime createdAt;
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SupplierIngredientRepository extends JpaRepository<SupplierIngredientEntity, Long> {
     int countByIngredientId(Long ingredientId);
+    boolean existsBySupplierIdAndIngredientId(Long supplierId, Long ingredientId);
 }

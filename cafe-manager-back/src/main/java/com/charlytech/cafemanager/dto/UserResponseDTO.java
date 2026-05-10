@@ -6,11 +6,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class UserRequestDTO {
-    private Long id;
+public class UserResponseDTO extends BaseDTO{
+    //Consult a User...
     private String username;
     private String email;
-    private String password;
     private UserEntity.Role role;
     private boolean active;
     private LocalDateTime createdAt;

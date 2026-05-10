@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IngredientPriceHistoryRepository extends JpaRepository<IngredientPriceHistoryEntity, Long> {
+    boolean existsByIngredientId(Long ingredientId);
 }
