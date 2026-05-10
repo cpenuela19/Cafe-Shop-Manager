@@ -18,26 +18,20 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class ProductService {
-//    Product
 
     @Autowired
     private ProductRepository repository;
     @Autowired
     private RecipeRepository recipeRepository;
 
-//    No duplicate SKU
     @Transactional
-    public ProductEntity createProduct(ProductEntity product)
-    {
-        boolean target = repository.existsBySku(product.getSku());
-        if(target)
+    public ProductEntity createProduct(ProductEntity product) {
+        if (repository.existsBySku(product.getSku()))
             throw new IllegalOperationException("Sku already exists");
         return repository.save(product);
     }
 
-//    A product's suggested price cannot be lower than the total calculated cost of its recipe
     private double calcularCostoReceta(RecipeEntity recipe) {
-
         double costoIngredientes = recipe.getRecipeIngredients().stream()
                 .mapToDouble(ri -> ri.getQuantityUsed() * ri.getIngredient()
                         .getIngredientPriceHistory()
@@ -55,14 +49,27 @@ public class ProductService {
 
         return costoIngredientes + costoComponentes;
     }
-    @Transactional
-    public ProductEntity createProduct(ProductEntity product, Long recipeId) {
 
+    @Transactional
+    public ProductEntity createProduct(@NonNull ProductEntity product, Long recipeId) {
         Optional<RecipeEntity> recipeValidation = recipeRepository.findById(recipeId);
         if (recipeValidation.isEmpty())
             throw new IllegalOperationException("Recipe not found");
 
         RecipeEntity recipe = recipeValidation.get();
+
+        // Recipe must be active to create a product
+        if (!recipe.isActive())
+            throw new IllegalOperationException("Cannot create product: the associated recipe '" +
+                    recipe.getName() + "' is not active");
+
+        // SKU must be at least 3 characters
+        if (product.getSku() == null || product.getSku().trim().length() < 3)
+            throw new IllegalOperationException("SKU must be at least 3 characters long");
+
+        // Product name cannot be blank
+        if (product.getName() == null || product.getName().isBlank())
+            throw new IllegalOperationException("Product name cannot be blank");
 
         if (product.getSuggestedPrice() < calcularCostoReceta(recipe))
             throw new IllegalOperationException("Suggested price cannot be lower than recipe cost");
@@ -70,6 +77,4 @@ public class ProductService {
         product.setRecipe(recipe);
         return repository.save(product);
     }
-
 }
-  

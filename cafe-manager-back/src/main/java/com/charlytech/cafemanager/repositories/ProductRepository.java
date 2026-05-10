@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     boolean existsBySku(String sku);
+    boolean existsByRecipeIdAndActiveTrue(Long recipeId);
 }

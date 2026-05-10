@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CostComponentRepository extends JpaRepository<CostComponentEntity, Long>{
+    boolean existsByStaffRoleId(Long staffRoleId);
 }

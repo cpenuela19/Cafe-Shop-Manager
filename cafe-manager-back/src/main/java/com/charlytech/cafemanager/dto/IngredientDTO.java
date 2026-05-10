@@ -1,4 +1,12 @@
 package com.charlytech.cafemanager.dto;
 
-public class IngredientDTO {
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Data
+public class IngredientDTO extends BaseDTO{
+    private String name;
+    private boolean active;
+    private LocalDateTime createdAt;
 }
