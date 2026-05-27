@@ -1,6 +1,5 @@
 package com.charlytech.cafemanager.dto;
 
-import com.charlytech.cafemanager.entities.BaseEntity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
